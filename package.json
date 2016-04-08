@@ -1,6 +1,6 @@
 {
   "name": "downloadAPI",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,7 @@
       "type": "MIT",
       "url": "https://github.com/brentertz/scapegoat/blob/master/LICENSE-MIT"
     }
-  ],  
+  ],
   "bugs": {
     "url": "https://github.com/wahengchang/downloadAPI/issues"
   },
