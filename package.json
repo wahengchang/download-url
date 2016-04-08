@@ -1,0 +1,37 @@
+{
+  "name": "downloadAPI",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/wahengchang/download_request_nodejs.git"
+  },
+  "keywords": [
+    "download",
+    "request",
+    "promise",
+    "pipe",
+    "streaming",
+    "http",
+    "https"
+  ],
+  "author": "Peter",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/brentertz/scapegoat/blob/master/LICENSE-MIT"
+    }
+  ],  
+  "bugs": {
+    "url": "https://github.com/wahengchang/download_request_nodejs/issues"
+  },
+  "homepage": "https://github.com/wahengchang/download_request_nodejs#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  }
+}
