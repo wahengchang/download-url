@@ -30,7 +30,7 @@ function downloadAPI(url0) {
   }
 
   function setPath(str) {
-    if(fs.existsSync(__dirname+str)){
+    if(fs.existsSync(str)){
       path = str
     }
     else{
@@ -65,7 +65,7 @@ function downloadAPI(url0) {
 
         var filename = getUrlFileName(downloadlink)
 
-        var dist = __dirname + path + "/" +filename
+        var dist = path + "/" +filename
       
         var readableStream = fs.createWriteStream(dist);
 
