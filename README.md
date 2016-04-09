@@ -66,7 +66,7 @@ downloadAPI("www.abc.jpg").setPath("/upload/directary")
 
 
 ### start()
-It is a function which return a promise, to trigger download, from the given URL to the given Directary.
+It is a function which return a promise, to trigger download, from the given URL to the given Directary and process the url validate checkup before download.
 ```js
 var downloadAPI = require('downloadAPI');
 downloadAPI("www.abc.jpg")
