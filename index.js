@@ -1,6 +1,7 @@
 
 var https = require('https');
 var http = require('http');
+var downloadableAPI = require('url-valid');
 var fs = require('fs');
 
 function downloadAPI(url0) {
@@ -58,6 +59,26 @@ function downloadAPI(url0) {
 
   }
 
+
+  function isDownloadable(url) {
+      return new Promise(function (resolve, reject) {
+
+        downloadableAPI(url, function (err, valid) {
+          if (err){
+            reject(err)
+          }
+          else{
+            if(valid) resolve()
+              else{
+                errMsg ="linke is not downloadable"
+                reject({errMsg:errMsg})
+              }
+          }
+        });
+
+      })
+  }
+
   function downloadToLocal() {
     return new Promise(function(resolve, reject) {
 
@@ -91,9 +112,22 @@ function downloadAPI(url0) {
     })
   }
 
+  function triggerDownload(){
+    return new Promise(function(resolve, reject) {
+      isDownloadable(downloadlink).then(function(result1){
+        return downloadToLocal()
+      }).then(function(result2){
+        resolve(result2)
+      },function(error){
+        reject(error)
+      })
+    })
+  }
+
   return {
-    start: downloadToLocal,
+    start: triggerDownload,
     isHttps: isHttps,
+    isDownloadable: isDownloadable,
     setPath: setPath,
     getUrlFileName: getUrlFileName
   }

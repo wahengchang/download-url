@@ -19,7 +19,9 @@ var server = http.createServer(function (request, response) {
   //this is a example of function version 
   //var API = downloadAPI(url)
   //API.setPath(path)
-  //API.start().then(function(result){
+  //API.start().then(function(result) .. ...
+    
+  // API.isDownloadable(url).then(function(result) . ....
 
 
 
@@ -35,7 +37,6 @@ var server = http.createServer(function (request, response) {
     response.end(JSON.stringify(error));
   })
 
-});
 
 server.listen(3000);
 console.log("Server running at http://127.0.0.1:3000/");
