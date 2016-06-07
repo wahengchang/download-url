@@ -1,10 +1,10 @@
-# downloadAPI 
-downloadAPI to download file from URL to local by http/https request in nodejs, and resolve a promise when it is done.
+# download-url 
+download-url is a download toolkit which support both http and https URL, to check and download file by given URL, also resolve a promise when it is done
 
 ## Install
 
 ```
-$ npm install --save downloadAPI
+$ npm install --save download-url
 ```
 
 
@@ -13,7 +13,7 @@ $ npm install --save downloadAPI
 Chain version
 
 ```js
-var downloadAPI = require('downloadAPI');
+var downloadAPI = require('download-url');
 var url = "http://abc"
 var path = _dirname + "/upload"
 
@@ -28,7 +28,7 @@ downloadAPI(url).setPath(path).start().then(function(result){
 Function version
 
 ```js
-var downloadAPI = require('downloadAPI');
+var downloadAPI = require('download-url');
 var url = "http://abc"
 var path = _dirname + "/upload"
 
@@ -48,14 +48,14 @@ API.start().then(function(result){
 ### constructor
 Giving download url as parameter, and start check up if it is work and downloadable. 
 ```js
-var downloadAPI = require('downloadAPI');
+var downloadAPI = require('download-url');
 downloadAPI("www.abc.jpg")
 ```
 
 ### setPath("/upload/directary")
 Giving destination directory as parameter, which needed to be created before storing the download file. 
 ```js
-var downloadAPI = require('downloadAPI');
+var downloadAPI = require('download-url');
 downloadAPI("www.abc.jpg")
 downloadAPI.setPath(path)
 
@@ -68,7 +68,7 @@ downloadAPI("www.abc.jpg").setPath("/upload/directary")
 ### start()
 It is a function which return a promise, to trigger download, from the given URL to the given Directary and process the url validate checkup before download.
 ```js
-var downloadAPI = require('downloadAPI');
+var downloadAPI = require('download-url');
 downloadAPI("www.abc.jpg")
 downloadAPI.setPath(path)
 downloadAPI.start().then(function(result){
