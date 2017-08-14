@@ -13,33 +13,18 @@ $ npm install --save download-url
 Chain version
 
 ```js
-var downloadAPI = require('download-url');
-var url = "http://abc"
-var path = _dirname + "/upload"
 
-downloadAPI(url).setPath(path).start().then(function(result){
-	//...... file is downloaded to local
+var _d = new downloadAPI(url)
+
+_d.setPath(path).start().then(function(result){
+
+  console.log('result: ', result)
+
 },function(error){
-	//...... do somthing
+
+  console.log(error)
 })
 
-```
-
-Function version
-
-```js
-var downloadAPI = require('download-url');
-var url = "http://abc"
-var path = _dirname + "/upload"
-
-var API = downloadAPI(url)
-API.setPath(path)
-
-API.start().then(function(result){
-	//...... file is downloaded to local
-},function(error){
-	//...... do somthing
-})
 
 ```
 

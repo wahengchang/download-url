@@ -3,40 +3,32 @@ var http = require('http');
 var fs = require('fs');
 var downloadAPI = require('../index');
 
+var url = "https://banana-video.s3.amazonaws.com/20833593_1624520684239558_8492163269279088640_n.mp4"
+var path = __dirname
 
-
-var server = http.createServer(function (request, response) {
-
-
-  var url = "https://www.google.com.tw/images/nav_logo242.png"
-  var path = __dirname
-
-  //  path have to be be a existed directory
-  //  var path = __dirname + "/upload"
+//  path have to be be a existed directory
+//  var path = __dirname + "/upload"
 
 
 
-  //this is a example of function version 
-  //var API = downloadAPI(url)
-  //API.setPath(path)
-  //API.start().then(function(result) .. ...
-    
-  // API.isDownloadable(url).then(function(result) . ....
-
-
-
-  //this is a example of chain version 
-  downloadAPI(url).setPath(path).start().then(function(result){
+//this is a example of function version 
+//var API = downloadAPI(url)
+//API.setPath(path)
+//API.start().then(function(result) .. ...
   
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end(JSON.stringify(result));
-
-  },function(error){
-
-    response.writeHead(400, {"Content-Type": "text/plain"});
-    response.end(JSON.stringify(error));
-  })
+// API.isDownloadable(url).then(function(result) . ....
 
 
-server.listen(3000);
-console.log("Server running at http://127.0.0.1:3000/");
+
+//this is a example of chain version 
+var _d = new downloadAPI(url)
+
+_d.setPath(path).start().then(function(result){
+
+  console.log('result: ', result)
+
+},function(error){
+
+  console.log(error)
+})
+
