@@ -16,7 +16,7 @@ Chain version
 
 var _d = new downloadAPI(url)
 
-_d.setPath(path).start().then(function(result){
+_d.setPath(path).start('abc.mp4').then(function(result){
 
   console.log('result: ', result)
 

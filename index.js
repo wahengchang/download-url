@@ -17,7 +17,7 @@ var fs = require('fs');
     return url.split('/').pop()
   }
 
-  function downloadToLocal(_downloadlink, _path, _httprequest) {
+  function downloadToLocal(_downloadlink, _path, _httprequest, _fileName) {
     
     var downloadlink = _downloadlink
     var path = _path
@@ -26,10 +26,10 @@ var fs = require('fs');
     var received_bytes = 0;
     var total_bytes = 0;
 
-    return new Promise(function(resolve, reject) {
+    var __fn = _fileName || getUrlFileName(downloadlink)
 
-        var filename = getUrlFileName(downloadlink)
-        var dist = path + "/" +filename
+    return new Promise(function(resolve, reject) {
+        var dist = path + "/" +__fn
         var readableStream = fs.createWriteStream(dist);
 
         httprequest.get(downloadlink, function(res) {
@@ -86,7 +86,7 @@ function downloadAPI(url0) {
 
   if(isHttps(url0) == 1) 
     this.httprequest = https
-  else if(isHttps(t) == 0) 
+  else if(isHttps(url0) == 0) 
     this.httprequest = http
   else {
     console.log(" error on http or https")
@@ -121,7 +121,7 @@ downloadAPI.prototype.setPath = function(str) {
     return this
   }
 
-downloadAPI.prototype.start = function(){
+downloadAPI.prototype.start = function(fileName){
     var _url = this.downloadlink
     var _path = this.path
     var _httprequest = this.httprequest
@@ -130,7 +130,7 @@ downloadAPI.prototype.start = function(){
     return new Promise(function(resolve, reject) {
       isDownloadable(_url).then(function(result1){
         if(!_isStart) reject ({errMsg: '!_isStart'})
-          else return downloadToLocal(_url, _path, _httprequest)
+          else return downloadToLocal(_url, _path, _httprequest, fileName)
       }).then(function(result2){
         resolve(result2)
       },function(error){
